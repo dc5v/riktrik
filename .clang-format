@@ -42,4 +42,3 @@ SpacesInCStyleCastParentheses: true
 SpacesInParentheses: true
 Standard: Cpp11
 TabWidth: 2
-UseTab: Always
