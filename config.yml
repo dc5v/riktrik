@@ -1,0 +1,26 @@
+server:
+  port: 8832 # TTDB
+  buffer_size: 1024
+  max_clients: 10
+  client_timeout: 5 # 초
+
+data:
+  tags_limit: 10
+  data_array_limit: 10
+  directory: "data"
+  lock_sleep: 1000 # 밀리초
+
+hash:
+  size: 104729
+
+model:
+  directory: "models"
+  max_entries: -1
+  disable_models:
+    - "LSTM"
+    - "Prophet"
+
+logging:
+  level: "info"
+  file: "tictacdb.log"
+  max_size: 1048576
