@@ -32,9 +32,8 @@
 #define EVA_VARIANCE_P2           0b00010111
 
 double eva_p1   ( int operation, size_t len, const double *data );
-double eva_p2   ( int operation, size_t len, const double *data, double p1 );
-double eva_p3   ( int operation, size_t len, const double *data, double p1, double p2 );
+double eva_p2   ( int operation, size_t len, const double *data, const double p1 );
+double eva_p3   ( int operation, size_t len, const double *data, const double p1, const double p2 );
 double eva_p4r3 ( int operation, size_t len, const double *data, double *p1, double *p2, double *p3 );
-void   eva_sort ( double *data, int lh, int rh );
 
 #endif
