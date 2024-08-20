@@ -3,4 +3,5 @@ data/*
 obj/*
 .deprecated/*
 .vscode/*
-models/
+models/*
+logs/*

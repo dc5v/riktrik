@@ -12,7 +12,7 @@ BasedOnStyle: LLVM
 BinPackParameters: true
 BreakBeforeBraces: Allman
 BreakBeforeTernaryOperators: true
-ColumnLimit: 200
+ColumnLimit: 500
 ConstructorInitializerAllOnOneLineOrOnePerLine: true
 Cpp11BracedListStyle: true
 DerivePointerAlignment: true

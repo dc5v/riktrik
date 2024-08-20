@@ -31,8 +31,8 @@ static void eva_sort ( double *data, int left, int right )
 
     int idx = i + 1;
 
-    quicksort ( data, left, idx - 1 );
-    quicksort ( data, idx + 1, right );
+    eva_sort ( data, left, idx - 1 );
+    eva_sort ( data, idx + 1, right );
   }
 }
 
@@ -67,8 +67,8 @@ double eva_p1 ( int operation, size_t len, const double *data )
           valid_count++;
         }
       }
-
-      result = valid_count > 0 ? pow ( product, 1.0 / valid_count ) : 0.0;
+			
+      result = ( valid_count > 0 ) ? pow ( product, 1.0 / valid_count ) : 0.0;
     }
     break;
 
@@ -95,7 +95,7 @@ double eva_p1 ( int operation, size_t len, const double *data )
       double *sorted_data = malloc ( len * sizeof ( double ) );
 
       memcpy ( sorted_data, data, len * sizeof ( double ) );
-      quicksort ( sorted_data, 0, len - 1 );
+      eva_sort ( sorted_data, 0, len - 1 );
 
       if ( len % 2 == 0 )
       {
@@ -385,7 +385,7 @@ void eva_p4r3 ( int operation, size_t len, const double *data, double *p1, doubl
       double *sorted_data = malloc ( len * sizeof ( double ) );
 
       memcpy ( sorted_data, data, len * sizeof ( double ) );
-      quicksort ( sorted_data, 0, len - 1 );
+      eva_sort ( sorted_data, 0, len - 1 );
 
       *p2 = eva_p1 ( EVA_MEDIAN_P1, len, sorted_data );
 
