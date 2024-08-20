@@ -36,6 +36,6 @@ while true; do
 EOF
   )
 
-  echo $JSON # | nc localhost 8832
+  echo $JSON | nc localhost 8832
   sleep 0.01
 done

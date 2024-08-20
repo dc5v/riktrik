@@ -24,7 +24,7 @@ while true; do
 
   JSON=$(cat <<EOF
 {
-  "query": "evaluate",
+  "query": "search",
   "condition": "$CND",
   "tags": [ $TAG_ARR ]
 }
@@ -35,4 +35,3 @@ EOF
 
   sleep 1
 done
-
