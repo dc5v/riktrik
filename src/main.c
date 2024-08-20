@@ -62,7 +62,7 @@ typedef struct
   const double *data;
   size_t        data_len;
   int           client_socket;
-} EvaluationArgs;
+} EvaluateParams;
 
 IndexEntry     *Tag_index = NULL;
 pthread_mutex_t Index_lock;
@@ -115,7 +115,6 @@ void        send_err ( int client_socket, int error_code, const char *message_fo
 void        free_index_entries ( IndexEntry *index );
 size_t      memory_usage ();
 void       *evaluate_thread ( void *args );
-void        process_batch ( const double *data, size_t len, int client_socket, bool is_evaluate );
 void        log_request ( const char *query, const char **tags, int tag_count, const char *condition, const char *data, int64_t start_time, int64_t response_time );
 
 size_t memory_usage ()
@@ -128,7 +127,7 @@ size_t memory_usage ()
 
 void *evaluate_thread ( void *args )
 {
-  EvaluationArgs *eval_args = ( EvaluationArgs * )args;
+  EvaluateParams *eval_args = ( EvaluateParams * )args;
 
   query_evaluate ( eval_args->client_socket, eval_args->data, eval_args->data_len );
   free ( ( void * )eval_args->data );
@@ -274,34 +273,6 @@ void fs_save ( const char *filename, const void *data, size_t size )
   fwrite ( data, size, 1, file );
 }
 
-void process_batch ( const double *data, size_t len, int client_socket, bool is_evaluate )
-{
-  if ( is_evaluate )
-  {
-    int64_t request_time = now ();
-
-    EvaluationArgs *args = malloc ( sizeof ( EvaluationArgs ) );
-    args->data           = malloc ( len * sizeof ( double ) );
-    memcpy ( ( void * )args->data, data, len * sizeof ( double ) );
-    args->data_len      = len;
-    args->client_socket = client_socket;
-
-    pthread_t eval_thread;
-    int       thread_result = pthread_create ( &eval_thread, NULL, evaluate_thread, args );
-    if ( thread_result != 0 )
-    {
-      fprintf ( stderr, "Failed to create thread: %s\n", strerror ( thread_result ) );
-      free ( args );
-      close ( client_socket );
-      return;
-    }
-
-    pthread_detach ( eval_thread );
-    log_request ( "evaluate", NULL, 0, NULL, NULL, request_time, now () );
-  }
-}
-
-
 void log_request ( const char *query, const char **tags, int tag_count, const char *condition, const char *data, int64_t start_time, int64_t response_time )
 {
   char log_filename[128];
@@ -339,7 +310,6 @@ void log_request ( const char *query, const char **tags, int tag_count, const ch
           strcat ( tags_buffer, ", " );
           tags_len += 2;
         }
-
         strcat ( tags_buffer, tags[i] );
         tags_len += strlen ( tags[i] );
       }
@@ -871,7 +841,7 @@ void search ( const char **tags, int tag_count, const char *condition, int64_t s
 
                 if ( data_len >= EVALUATE_BATCH_LIMIT )
                 {
-                  EvaluationArgs *args = malloc ( sizeof ( EvaluationArgs ) );
+                  EvaluateParams *args = malloc ( sizeof ( EvaluateParams ) );
 
                   args->data          = all_data;
                   args->data_len      = data_len;
@@ -929,7 +899,7 @@ void search ( const char **tags, int tag_count, const char *condition, int64_t s
 
   if ( is_evaluate && data_len > 0 )
   {
-    EvaluationArgs *args = malloc ( sizeof ( EvaluationArgs ) );
+    EvaluateParams *args = malloc ( sizeof ( EvaluateParams ) );
     args->data           = all_data;
     args->data_len       = data_len;
     args->client_socket  = client_socket;
@@ -1114,17 +1084,19 @@ double c_harm_mean ( const double *data, size_t len )
 
 double c_geo_mean ( const double *data, size_t len )
 {
-  double product = 1.0;
+  double product     = 1.0;
+  size_t valid_count = 0;
 
   for ( size_t i = 0; i < len; i++ )
   {
     if ( data[i] > 0 )
     {
       product *= data[i];
+      valid_count++;
     }
   }
 
-  return pow ( product, 1.0 / len );
+  return pow ( product, 1.0 / valid_count );
 }
 
 double c_range ( const double *data, size_t len )
