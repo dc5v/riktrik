@@ -11,19 +11,19 @@
 #include <vector>
 
 #ifdef _MSC_VER
-#include <intrin.h>
+#  include <intrin.h>
 #else
-#include <x86intrin.h>
+#  include <x86intrin.h>
 #endif
 
 #ifdef _WIN32
-#ifdef REGEX_ENGINE_EXPORTS
-#define REGEX_API __declspec ( dllexport )
+#  ifdef REGEX_ENGINE_EXPORTS
+#    define REGEX_API __declspec ( dllexport )
+#  else
+#    define REGEX_API __declspec ( dllimport )
+#  endif
 #else
-#define REGEX_API __declspec ( dllimport )
-#endif
-#else
-#define REGEX_API
+#  define REGEX_API
 #endif
 
 using namespace std;
@@ -97,7 +97,9 @@ private:
   {
     bool is_final;
     map<wstring, shared_ptr<State>> mapper;
-    State () : is_final ( false ) { }
+    State () : is_final ( false )
+    {
+    }
   };
 
   shared_ptr<State> root;
@@ -134,6 +136,7 @@ private:
 
   bool isAvailableSIMD () const
   {
+    /* clang-format off */
     #ifdef _MSC_VER
         int cpu_info[4];
         __cpuid ( cpu_info, 1 );
@@ -141,6 +144,7 @@ private:
     #else
         return __builtin_cpu_supports ( "avx2" );
     #endif
+    /* clang-format on */
   }
 
   bool matchSIMD ( const wstring& str ) const

@@ -7,7 +7,7 @@ AllowAllParametersOfDeclarationOnNextLine: true
 AllowShortBlocksOnASingleLine: false 
 AllowShortFunctionsOnASingleLine: None 
 AllowShortLoopsOnASingleLine: false 
-AlwaysBreakTemplateDeclarations: true 
+AlwaysBreakTemplateDeclarations: false  # 여기 수정
 BasedOnStyle: LLVM 
 BinPackParameters: true 
 BreakBeforeBraces: Allman 
@@ -42,4 +42,5 @@ SpacesInCStyleCastParentheses: true
 SpacesInParentheses: true 
 Standard: Cpp11 
 TabWidth: 2 
-AllowShortIfStatementsOnASingleLine: false
+IndentPPDirectives: AfterHash
+
