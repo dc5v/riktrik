@@ -1,44 +1,45 @@
-AlignConsecutiveAssignments: true
-AlignConsecutiveDeclarations: true
-AlignConsecutiveMacros: true
-AlignEscapedNewlinesLeft: true
-AlignTrailingComments: true
-AllowAllParametersOfDeclarationOnNextLine: true
-AllowShortBlocksOnASingleLine: false
-AllowShortFunctionsOnASingleLine: None
-AllowShortLoopsOnASingleLine: false
-AlwaysBreakTemplateDeclarations: true
-BasedOnStyle: LLVM
-BinPackParameters: true
-BreakBeforeBraces: Allman
-BreakBeforeTernaryOperators: true
-ColumnLimit: 500
-ConstructorInitializerAllOnOneLineOrOnePerLine: true
-Cpp11BracedListStyle: true
-DerivePointerAlignment: true
-DisableFormat: false
-ExperimentalAutoDetectBinPacking: true
-IncludeCategories:
-  - Regex: '^\<[a-zA-Z0-9]+[.]h\>'
-    Priority: 1
-  - Regex: '^\<.*[/].*\>'
-    Priority: 2
-  - Regex: '^\..*'
-    Priority: 3
-  - Regex: .*
-    Priority: 4
-IndentCaseLabels: true
-IndentWrappedFunctionNames: true
-KeepEmptyLinesAtTheStartOfBlocks: true
-Language: Cpp
-MaxEmptyLinesToKeep: 2
-NamespaceIndentation: All
-PointerAlignment: Left
-SortIncludes: true
-SpaceBeforeAssignmentOperators: true
-SpaceBeforeParens: Always
-SpacesInAngles: false
-SpacesInCStyleCastParentheses: true
-SpacesInParentheses: true
-Standard: Cpp11
-TabWidth: 2
+AlignConsecutiveAssignments: true 
+AlignConsecutiveDeclarations: true 
+AlignConsecutiveMacros: true 
+AlignEscapedNewlinesLeft: true 
+AlignTrailingComments: true 
+AllowAllParametersOfDeclarationOnNextLine: true 
+AllowShortBlocksOnASingleLine: false 
+AllowShortFunctionsOnASingleLine: None 
+AllowShortLoopsOnASingleLine: false 
+AlwaysBreakTemplateDeclarations: true 
+BasedOnStyle: LLVM 
+BinPackParameters: true 
+BreakBeforeBraces: Allman 
+BreakBeforeTernaryOperators: true 
+ColumnLimit: 700 
+ConstructorInitializerAllOnOneLineOrOnePerLine: true 
+Cpp11BracedListStyle: true 
+DerivePointerAlignment: true 
+DisableFormat: false 
+ExperimentalAutoDetectBinPacking: true 
+IncludeCategories: 
+  - Regex: '^\<[a-zA-Z0-9]+[.]h\>' 
+    Priority: 1 
+  - Regex: '^\<.*[/].*\>' 
+    Priority: 2 
+  - Regex: '^\..*' 
+    Priority: 3 
+  - Regex: .* 
+    Priority: 4 
+IndentCaseLabels: true 
+IndentWrappedFunctionNames: true 
+KeepEmptyLinesAtTheStartOfBlocks: true 
+Language: Cpp 
+MaxEmptyLinesToKeep: 2 
+NamespaceIndentation: All 
+PointerAlignment: Left 
+SortIncludes: true 
+SpaceBeforeAssignmentOperators: true 
+SpaceBeforeParens: Always 
+SpacesInAngles: false 
+SpacesInCStyleCastParentheses: true 
+SpacesInParentheses: true 
+Standard: Cpp11 
+TabWidth: 2 
+AllowShortIfStatementsOnASingleLine: false

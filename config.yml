@@ -1,26 +1,37 @@
 server:
-  port: 8832 # TTDB
-  buffer_size: 1024
-  max_clients: 10
-  client_timeout: 5 # 초
-
+  id: "manager-01"
+  port: 8823 # default: 8823
+  type: "manager" # default: single
 data:
-  tags_limit: 10
-  data_array_limit: 10
-  directory: "data"
-  lock_sleep: 1000 # 밀리초
+  path: "/mnt/sda1"
+shard:
+  rules:
+    - id: "shard-01"
+      conditions:
+        - "ns:2;nodename[a-fA-F].*[0-5]+$"
+        - "ns:2;nodename[a-fA-F].*[a-z8]+$"
+    - id: "shard-02"
+      conditions:
+        - "ns:2;nodename[g-zG-Z].*[0-5]+$"
+        - "ns:2;nodename[g-zG-Z].*[a-z8]+$"
 
-hash:
-  size: 104729
+server:
+  id: "shard-01"
+  port: 18823
+  type: "shard" 
+  manager:
+    host: 192.168.0.22
+    port: 8823
+storage: # tj
+  hot:
+    duration: 90     # 90일
+    path: "/mnt/ssd" 
+  cold:
+    path: "/mnt/hdd"
+    compress: true 
 
-model:
-  directory: "models"
-  max_entries: -1
-  disable_models:
-    - "LSTM"
-    - "Prophet"
-
-logging:
-  level: "info"
-  file: "tictacdb.log"
-  max_size: 1048576
+server:
+  id: "db-01"
+  port: 8823
+data:
+  path: "/mnt/sda1"
