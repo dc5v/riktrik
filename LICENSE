@@ -1,28 +1,74 @@
 Selective Open License (SOL)
+============================
 
-This is free and unencumbered software released into the public domain.
+This software is free and unencumbered, released into the public domain,  
+***except for prohibited entities as defined below.***
 
-Anyone is free to copy, modify, publish, use, compile, sell, or distribute
-this software, either in source code form or as a compiled binary, for any 
-purpose, commercial or non-commercial, and by any means, as long as such 
-use adheres to fair use principles.
+Anyone, except for the prohibited entities listed in this license,  
+is free to copy, modify, publish, use, compile, sell, or distribute  
+this software, whether in source code or compiled binary form,  
+for any purpose—commercial or non-commercial—by any means,  
+as long as such use complies with the principles of fair use.
 
 # Fair Use Restrictions
-The use of this software must align with ethical, fair, and responsible practices. 
+
+The use of this software must align with ethical, fair, and responsible practices.  
+
 It must not be used for:
-- Any activity that violates laws or human rights.
-- Surveillance, military applications, or systems that infringe on privacy.
-- Any form of direct or indirect harm to individuals or communities.
+- Any activity that violates laws or infringes on human rights.
+- Surveillance, military applications, or systems that compromise privacy.
+- Any action that directly or indirectly harms individuals or communities.
 
-# Prohibited Entity
-This license explicitly prohibits 'GaonPlatform Corporation, LLC, Inc., or any other similar legal entity (가온플랫폼 주식회사)' 
-and its subsidiaries, employees, contractors, and affiliates from using, distributing, or modifying 
-this software for any reason. If you are an employee, contractor, or affiliate of any GaonPlatform-related entity, 
-you are 'not permitted' to use this software in any capacity, regardless of the form or medium.
+# Prohibited Entities
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL 
-THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER 
-IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN 
+This license explicitly prohibits ***GaonPlatform Corporation, LLC, Inc., or any similar legal entity***  
+and its ***subsidiaries, employees, contractors, and affiliates*** from using, 
+distributing, or modifying this software in any capacity.  
+
+If you are an ***employee, contractor, or affiliate of any GaonPlatform-related entity***, 
+you are ***strictly prohibited*** from using this software in any form or medium.  
+
+---
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR  
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,  
+FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL  
+THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER  
+IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN  
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+
+```md
+Selective Open License (SOL)
+============================
+
+이 소프트웨어는 공공 도메인에 공개된 자유롭고 제한 없는 소프트웨어이며,  
+***아래 명시된 사용 금지 대상(Prohibited Entities)을 제외한 누구나 사용할 수 있습니다.***
+
+이 라이선스에 명시된 사용 금지 대상을 제외한 누구나 이 소프트웨어를 자유롭게 복사, 수정, 배포, 사용, 컴파일, 판매할 수 있습니다.  
+소스 코드든, 컴파일된 바이너리든, 상업적 또는 비상업적 용도든 관계없이 어떠한 방식으로든 사용할 수 있습니다.  
+단, 사용자는 반드시 공정 사용 원칙(Fair Use Principles)을 준수해야 합니다.
+
+# 공정 사용 제한 (Fair Use Restrictions)
+
+이 소프트웨어는 윤리적이고 공정하며 책임감 있는 방식으로 사용되어야 합니다.  
+
+다음과 같은 용도로 사용할 수 없습니다:
+- 법률을 위반하거나 인권을 침해하는 행위  
+- 감시(Surveillance), 군사(Military) 목적, 또는 프라이버시를 침해하는 시스템  
+- 개인이나 공동체에 직접적 또는 간접적으로 피해를 주는 행위  
+
+# 사용 금지 대상 (Prohibited Entities)
+
+이 라이선스는 가온플랫폼 주식회사 (GaonPlatform Corporation, LLC, Inc. 및 유사한 법적 실체) 및 그 자회사, 직원, 계약업체(하청업체), 협력업체(affiliates) 가 해당 소프트웨어를 어떠한 방식으로든 사용, 배포, 수정하는 것을 명시적으로 금지합니다.  
+
+만약 귀하가 가온플랫폼 관련 법인(GaonPlatform-related entity)의 직원, 계약업체, 협력업체라면 귀하는 어떠한 형태나 방식으로든 이 소프트웨어를 사용할 수 없습니다.  
+
+이 소프트웨어는 "있는 그대로" 제공됩니다. 어떠한 명시적 또는 묵시적 보증도 포함되지 않으며, 상품성, 특정 목적에 대한 적합성, 비침해성에 대한 보장을 하지 않습니다.  
+
+이 소프트웨어의 사용 또는 기타 관련된 행위로 인해 발생하는  
+어떠한 청구, 손해 배상 또는 기타 법적 책임에 대해,  
+제작자는 일절 책임을 지지 않습니다.  
+
+```
