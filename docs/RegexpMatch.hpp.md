@@ -18,31 +18,13 @@ RegexpMatch.hpp 고성능 정규식 라이브러리를 목표로 Windows, Linux 
 
 주요 정규식: 기본 문자, 문자 클래스 (i.e. [a-z], [0-9] etc.), 특수 문자 (\d, \w, \s), 반복사항 (*, +, ?)
 
-## 동작 원리
-
-RegexpMatch는 다음과 같은 방식으로 동작합니다:
-
-1. 패턴 분석
-   - 정규식 패턴을 토큰으로 분리
-   - 문자 클래스와 특수 문자 해석
-   - 상태 기계 구조 구축
-
-2. 매칭 프로세스
-   - 상태 기반 매칭 알고리즘 사용
-   - 점진적 텍스트 스캔
-   - 효율적인 백트래킹 처리
-
-3. 최적화 기법
-   - 상태 전이 테이블 최적화
-   - 메모리 사용량 최소화
-   - 불필요한 연산 제거
-
 ## 사용 방법
 
 ```cpp
 #include "RegexpMatch.hpp"
 
-int main() {
+int main() 
+{
    RegexpMatch pattern("[a-zA-Z0-9]+");
    RegexpMatch email("[\\w\\.-]+@[\\w\\.-]+\\.\\w+");
    RegexpMatch korean("[가-힣]+");
