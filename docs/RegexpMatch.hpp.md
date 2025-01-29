@@ -4,11 +4,11 @@ RegexpMatch.hpp 고성능 정규식 라이브러리를 목표로 Windows, Linux 
 
 ## Todos
 
-[ ] 전/후 검색
+- [ ] 전/후 검색
 
-[ ] SIMD(Single Instruction Multiple Data)  적용
+- [X] SIMD(Single Instruction Multiple Data)  적용
 
-[ ] 가속을 위한 JIT 컴파일
+- [ ] 가속을 위한 JIT 컴파일
 
 ## 주요 특징
 

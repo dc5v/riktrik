@@ -1,5 +1,5 @@
-AlignConsecutiveAssignments: true 
-AlignConsecutiveDeclarations: true 
+AlignConsecutiveAssignments: false 
+AlignConsecutiveDeclarations: false 
 AlignConsecutiveMacros: true 
 AlignEscapedNewlinesLeft: true 
 AlignTrailingComments: true 
