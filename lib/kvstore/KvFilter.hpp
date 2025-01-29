@@ -98,6 +98,8 @@ class IKvFilter
 {
 public:
   virtual ~IKvFilter () = default;
+  IKvFilter () = default;
+
 
   virtual void insert ( const string& key ) = 0;
   virtual bool isContain ( const string& key ) const = 0;
