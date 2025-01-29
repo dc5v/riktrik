@@ -45,9 +45,13 @@ if (auto data = store.key("name"))
     cout << "name: " << *name << std::endl;
   }
 }
+
+store.flush();
+store.close();
 ```
 
 ## 의존성
+
 - Boost
 - Intel TBB
 - yaml-cpp
