@@ -9,7 +9,7 @@ AllowShortFunctionsOnASingleLine: None
 AllowShortLoopsOnASingleLine: false 
 AlwaysBreakTemplateDeclarations: false  # 여기 수정
 BasedOnStyle: LLVM 
-BinPackParameters: true 
+BinPackParameters: false 
 BreakBeforeBraces: Allman 
 BreakBeforeTernaryOperators: true 
 ColumnLimit: 700 
@@ -43,4 +43,3 @@ SpacesInParentheses: true
 Standard: Cpp11 
 TabWidth: 2 
 IndentPPDirectives: AfterHash
-

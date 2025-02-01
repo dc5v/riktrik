@@ -1,43 +1,15 @@
-Selective Open License (SOL)
-============================
-
-This software is free and unencumbered, released into the public domain,  
-***except for prohibited entities as defined below.***
-
-Anyone, except for the prohibited entities listed in this license,  
-is free to copy, modify, publish, use, compile, sell, or distribute  
-this software, whether in source code or compiled binary form,  
-for any purpose—commercial or non-commercial—by any means,  
-as long as such use complies with the principles of fair use.
-
-## Fair Use Restrictions
-
-The use of this software must align with ethical, fair, and responsible practices.  
-
-It must not be used for:
-- Any activity that violates laws or infringes on human rights.
-- Surveillance, military applications, or systems that compromise privacy.
-- Any action that directly or indirectly harms individuals or communities.
-
-## Prohibited Entities
-
-This license explicitly prohibits ***GaonPlatform Corporation, LLC, Inc., or any similar legal entity***  
-and its ***subsidiaries, employees, contractors, and affiliates*** from using, 
-distributing, or modifying this software in any capacity.  
-
-If you are an ***employee, contractor, or affiliate of any GaonPlatform-related entity***, 
-you are ***strictly prohibited*** from using this software in any form or medium.  
-
-## Inquiries & Contributions
-
-Bug reports, feature requests, and pull requests are always welcome.
-Please share your feedback through the issue tracker on the project page.
-
+Curiosity Awaits
 ---
 
-> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR  
-> IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,  
-> FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL  
-> THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER  
-> IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN  
-> CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+Unlicense
+=========
+
+This is free and unencumbered software released into the public domain.
+
+Anyone is free to copy, modify, publish, use, compile, sell, or distribute this software, either in source code form or as a compiled binary, for any purpose, commercial or non-commercial, and by any means.
+
+In jurisdictions that recognize copyright laws, the author or authors of this software dedicate any and all copyright interest in the software to the public domain. We make this dedication for the benefit of the public at large and to the detriment of our heirs and successors. We intend this dedication to be an overt act of relinquishment in perpetuity of all present and future rights to this software under copyright law.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+For more information, please refer to http://unlicense.org/.
