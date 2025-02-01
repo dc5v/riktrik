@@ -1,4 +1,5 @@
-#pragma once
+#ifndef REGEXP_MATCH_HPP
+#define REGEXP_MATCH_HPP
 
 #include <algorithm>
 #include <codecvt>
@@ -388,3 +389,5 @@ private:
     return converter.to_bytes ( str );
   }
 };
+
+#endif
