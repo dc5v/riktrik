@@ -1,4 +1,5 @@
-#pragma once
+#ifndef KV_STORE_HPP
+#define KV_STORE_HPP
 
 #include <boost/pool/pool_alloc.hpp>
 #include <tbb/concurrent_unordered_map.h>
@@ -112,7 +113,7 @@ public:
     {
       return it->second;
     }
-    
+
     return nullopt;
   }
 
@@ -394,7 +395,7 @@ public:
       items.emplace_back ( key, value );
     }
 
-    PARALLEL_FOR ( items.begin (), items.end (), [] ( auto& item )  { } );
+    PARALLEL_FOR ( items.begin (), items.end (), [] ( auto& item ) {} );
     sort ( items.begin (), items.end () );
 
     for ( const auto& [k, v] : items )
@@ -492,7 +493,7 @@ public:
             auto k = item["key"].as<string> ();
             auto type = stringToType ( item["type"].as<string> () );
             auto v = yamlToValue ( item["value"], type );
-            
+
             push ( k, v );
           }
         }
@@ -739,3 +740,5 @@ private:
     }
   }
 };
+
+#endif

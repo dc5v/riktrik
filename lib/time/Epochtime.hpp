@@ -57,13 +57,11 @@ public:
     _time = chrono::system_clock::from_time_t ( tt );
   }
 
-
   void set_time ( long long epoch )
   {
     _time = chrono::system_clock::time_point ( chrono::milliseconds ( epoch ) );
     update ( epoch );
   }
-
 
   long long now ( int ms = 0 )
   {
@@ -79,7 +77,6 @@ public:
     return result;
   }
 
-
   string now_string ( int ms = 0 )
   {
     return to_string ( now ( ms ) );
@@ -89,8 +86,8 @@ private:
   void update ( long long epoch )
   {
     time_t raw = epoch / 1000;
+    
     _SSS = epoch % 1000;
-
     tm* t = gmtime ( &raw );
 
     _yyyy = t->tm_year + 1900;

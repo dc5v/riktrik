@@ -1,4 +1,5 @@
-#pragma once
+#ifndef KV_FILTER_HPP
+#define KV_FILTER_HPP
 
 #include <array>
 #include <chrono>
@@ -414,3 +415,5 @@ public:
     }
   }
 };
+
+#endif
