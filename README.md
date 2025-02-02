@@ -1,93 +1,85 @@
-# TictacDB
+# riktrik
 
-## 1. 시스템 개요
+<img src="./docs/assets/logo.svg" width="200" alt="logo">
 
-### 1.1 목적
+[[_TOC_]]
 
-TictacDB는 산업용 설비의 대규모 센서 데이터를 처리하기 위한 특화된 시계열 데이터베이스입니다. 
+`RIKTRIK` derived from the Tibetan word "རིགས་གྲིག་". This term is used in Tibetan Buddhism and means 'order' or 'systematic arrangement'
 
-일반적인 데이터베이스와 달리, 센서에서 발생하는 시계열 데이터를 초고속으로 저장하고 검색하는 데 최적화되어 있습니다.
+_'`RIKTRIK`은 티벳어 리크트리크("རིགས་གྲིག་")입니다. 이 의미는 티베트 불교에서 사용되는 용어로, "순서" 또는 "체계적인 배열"을 의미합니다.'_
 
-X 같아서 Unlicense 입니다.. 
+## this DBMS's design goal 
 
-### 1.2 주요 요구사항
-- 초당 20만개 데이터 처리: 대규모 공장이나 설비에서 발생하는 센서 데이터를 실시간으로 처리
-- 10년 이상 데이터 보관: 설비의 장기적인 상태 분석과 예측을 위한 히스토리 데이터 유지
-- 데이터 유실 방지: 공장 설비의 중요 데이터이므로 절대로 유실되면 안 됨
-- 고성능 검색: 오래된 데이터라도 빠르게 검색할 수 있어야 함
-- 안정적인 샤딩: 대용량 데이터를 여러 서버에 분산 저장하여 부하 분산
+`RIKTRIK` is time-series DBMS designed to efficiently compress and store only the necessary parts of sensor or equipment-sensed data, enabling fast retrieval and search.
 
-### 1.3 데이터 구조
-```cpp
-struct Record {
-    uint32_t id;          // 4바이트: 데이터의 고유 식별자
-    char tag[256];        // 256바이트: 식별자 (예: "PRESSURE_010")
-    double value;         // 8바이트: 센서 측정값
-    uint32_t status;      // 4바이트: 데이터 상태 코드
-    uint64_t sensored_at; // 8바이트: 센서 측정 시간 Epoch MS
-    uint64_t queued_at;   // 8바이트: 큐에 입력된 시간 Epoch MS
-    uint64_t stored_at;   // 8바이트: 실제 저장된 시간 Epoch MS
-    uint8_t is_deleted;   // 1바이트: 삭제 표시
-    uint8_t padding[3];   // 3바이트: 메모리 정렬
-};  // 총 292바이트
-```
+_'RIKTRIK은 센서 또는 장비에서 감지된 데이터의 필요한 부분만 효율적으로 압축 및 저장하도록 설계된 시계열 DBMS로, 빠른 검색과 조회를 가능하도록 디자인되었습니다.'_
 
-## 2. 시스템 아키텍처
+---
 
-### 2.1 물리적 구성
-시스템은 세 가지 주요 컴포넌트로 구성됩니다:
+## Structure basis
 
-1. 수집 서버
-   - 센서로부터 데이터를 직접 수집
-   - OPC-UA, OPC-DA 등 산업용 프로토콜 지원
-   - 초기 데이터 검증 수행
+`RIKTRIK` uses the custom type `uint24_t` when designing memory, file structure. This type is defined in [AdvancedType.hpp](./lib/types/AdvancedType.hpp).
 
-2. 매니저 서버
-   - 이중화 구성으로 무중단 운영
-   - 전체 시스템의 상태 모니터링
-   - 샤드 간 부하 분산 관리
-   - 데이터 복제 및 백업 관리
+_'`RIKTRIK`은 메모리 및 파일 구조를 설계할 때 커스텀 타입 `uint24_t`를 사용합니다. 이 타입은 [AdvancedType.hpp](./lib/types/AdvancedType.hpp)에 정의되어 있습니다. 메모리최적화를 위해 쉬프트연산시 약간의 어셈블러를 사용했습니다 (효과가 있을지는 아직 의문이지만..)'_
 
-3. 샤드 서버
-   - 실제 데이터 저장 담당
-   - 각각 독립된 저장소 사용
-   - 특정 태그 그룹의 데이터만 처리
+### Memory DB
 
-### 2.2 저장소 구조
-파일 시스템 구조는 다음과 같이 계층적으로 구성됩니다:
-```
-data                 # 최상위 데이터 디렉토리
-|-- 2024             # 연도별 구분
-    |- 01            # 월별 구분
-       |- 01         # 일별 구분
-          |- tag1.db # 태그별 데이터 파일
-          |- tag2.db
-        ...
-```
+*NID*(Node ID) represents the unique ID of each device (equipment) sensor.
+This data is stored in a memory database for fast indexing.
 
-이러한 구조의 장점:
-- 오래된 데이터 관리 용이
-- 백업과 복구가 간단
-- 특정 기간 데이터 검색이 빠름
+_'NID(Node ID)는 각 장비(설비) 센서의 고유 ID를 나타냅니다. 이 데이터는 빠른 인덱싱을 위해 메모리 데이터베이스에 저장됩니다.'_
 
-### 2.3 파일 내부 구조
+|    Name    | Type      | Size(bytes) | Range                          |
+| :--------: | --------- | ----------: | ------------------------------ |
+|   *NID*    | uint24_t  |           3 | 0 - 16,777,215                 |
+|    NAME    | char[255] |         255 | CHAR 255                       |
+|   VALUE    | int32_t   |           4 | -9999.00000 - 9999.00000       |
+|   STATUS   | uint8_t   |           1 | 0 - 255                        |
+| UPDATED_AT | uint64_t  |           8 | 0 - 18,446,744,073,709,551,615 |
 
-각 데이터 파일은 다음과 같은 구조로 구성됩니다
+
+> i.e. 
+> 271 bytes / 1 NID 
+> 
+> e.g. 
+> If using 200,000 NIDs with the [KvStore.hpp](./docs/KvStore.hpp.md) library, approximately 206.8MB of memory will be used.
+>
+> _즉, [KvStore.hpp](./docs/KvStore.hpp.md)라이브러리를 사용해 메모리 DB를 구성할경우, NID개당 271 bytes의 메모라를 사용하고_
+> 
+> _예를들어, 20만개의 NID가 있다면 206.8MB 정도의 메모리를 사용합니다._
+### Log Data
+
+Log records will only when `STATUS` or `VALUE` changes using a `Memory DB`. 
+And log files are sharding by [year, month, NID, day] to reduce overhead and unnecessary data storage, 
+facilitating data searches and simplifying the archiving of Hot and Cold data.
+
+_로그의 기록은 `Memory DB`를 사용하여 `STATUS` 또는 `VALUE`가 변경될 때만 저장합니다. 또한, 로그 파일은 [년, 월, NID, 일] 단위로 샤딩되어 오버헤드를 줄이고 필요한 데이만터 저장하고, 데이터 검색을 용이하게 하도록 디자인했으며, Hot|Cold 데이터의 아카이빙을 간소화합니다._
+
+|  Name  | Type     | Size | Range                    |
+| :----: | -------- | ---: | ------------------------ |
+| VALUE  | int32_t  |    4 | -9999.00000 - 9999.00000 |
+| STATUS | uint8_t  |    1 | 0 - 255                  |
+|  TIME  | uint24_t |    3 | 0 - 8,640,099            |
 
 ```
-[파일 구조 설명]
-+-----------------+
-| File Header     | -- 파일의 기본 정보 (32바이트)
-+-----------------+
-| Hourly Header 1 | -- 1시간 단위 데이터 정보 (32바이트)
-| Records...      | -- 실제 데이터 레코드들 (292바이트 * N개)
-+-----------------+
-| Hourly Header 2 | -- 다음 1시간 단위 정보
-| Records...      | -- 해당 시간의 레코드들
-+-----------------+
+[filenameㅡㄷ rule]
+
+data
+├── 2025
+│   └── 01
+│       ├── [NID]-01.db
+│       └── [NID]-02.db
+...
 ```
 
-## 3. 하드웨어 가속
+> `i.e.`
+> 8 bytes/sec.
+> 
+> If the value changes every time, 691,200 bytes/day.
+> 
+> `e.g.`
+> 
+> If the average change rate is 30% (entropy ≈ 0.3)
+> 
+> 1 NID ≈ 207,360 bytes/day, **200,000 NID ≈ 41.5 GB/day**
 
-### 3.1 FPGA 활용
-FPGA 하드웨어 수준에서 가속화합니다
