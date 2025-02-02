@@ -1,3 +1,6 @@
+| 😵‍💫 The code is still in progress. Not yet complete |
+| :------------------------------------------------: |
+
 # riktrik
 
 <img src="./docs/assets/logo.svg" width="200" alt="logo">
