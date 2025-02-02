@@ -14,6 +14,26 @@ _'`RIKTRIK`은 티벳어 리크트리크("རིགས་གྲིག་")입니
 
 _'RIKTRIK은 센서 또는 장비에서 감지된 데이터의 필요한 부분만 효율적으로 압축 및 저장하도록 설계된 시계열 DBMS로, 빠른 검색과 조회를 가능하도록 디자인되었습니다.'_
 
+- Optimized data storage. 
+  
+  _'데이터저장 최적화'_
+
+- Minimal memory usage. 
+  
+  _'최소한의 메모리사용'_
+
+- Easy configuration. 
+  
+  _'쉬운설정'_
+  
+- Near 0% loss data with WAL. 
+  
+  _'데이터유실 0%에 가깝도록, WAL(Write-ahead Logging)'_
+
+- Minimized dependency between custom libraries. 
+  
+  _'작성된 라이브러리간의 의존도최소화(되도록 없도록)'_
+
 ---
 
 ## Structure basis
