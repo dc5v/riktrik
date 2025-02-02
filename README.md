@@ -86,7 +86,7 @@ _로그의 기록은 `Memory DB`를 사용하여 `STATUS` 또는 `VALUE`가 변�
 |  TIME  | uint24_t |    3 | 0 - 8,640,099            |
 
 ```
-[filenameㅡㄷ rule]
+[filename rule]
 
 data
 ├── 2025
