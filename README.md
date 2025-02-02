@@ -57,16 +57,20 @@ _'NID(Node ID)는 각 장비(설비) 센서의 고유 ID를 나타냅니다. 이
 |   STATUS   | uint8_t   |           1 | 0 - 255                        |
 | UPDATED_AT | uint64_t  |           8 | 0 - 18,446,744,073,709,551,615 |
 
+```
+i.e. 
+271 bytes / 1 NID 
 
-> i.e. 
-> 271 bytes / 1 NID 
-> 
-> e.g. 
-> If using 200,000 NIDs with the [KvStore.hpp](./docs/KvStore.hpp.md) library, approximately 206.8MB of memory will be used.
->
-> _즉, [KvStore.hpp](./docs/KvStore.hpp.md)라이브러리를 사용해 메모리 DB를 구성할경우, NID개당 271 bytes의 메모라를 사용하고_
-> 
-> _예를들어, 20만개의 NID가 있다면 206.8MB 정도의 메모리를 사용합니다._
+e.g. 
+If using 200,000 NIDs with the [KvStore.hpp](./docs/KvStore.hpp.md) library, approximately 206.8MB of memory will be used.
+
+즉, 
+[KvStore.hpp](./docs/KvStore.hpp.md)라이브러리를 사용해 메모리 DB를 구성할경우, NID개당 271 bytes의 메모라를 사용.
+
+예를들어, 
+20만개의 NID가 있다면 206.8MB 정도의 메모리를 사용합니다.
+```
+
 ### Log Data
 
 Log records will only when `STATUS` or `VALUE` changes using a `Memory DB`. 
@@ -92,18 +96,18 @@ data
 ...
 ```
 
-> `i.e.`
-> 8 bytes/sec.
-> 
-> If the value changes every time, 691,200 bytes/day.
-> 
-> `e.g.`
-> 
-> If the average change rate is 30% (entropy ≈ 0.3)
-> 
-> 1 NID ≈ 207,360 bytes/day, **200,000 NID ≈ 41.5 GB/day**
->
-> _즉, NID 1개당 1초에 8bytes가 파일시스템에 저장됩니다._
-> 
-> _예를들어, 평균 데이터변화를 30%로 가정한다면(엔트로피를 0.3으로 가정. 행복회로 🧠 풓가동중), NID 20만개의 경우 하루 41.5 GB가 저장됩니다_
+```
+i.e.
+8 bytes/sec. If the value changes every time, 691,200 bytes/day.
+
+e.g.
+If the average change rate is 30% (entropy ≈ 0.3)
+1 NID ≈ 207,360 bytes/day, **200,000 NID ≈ 41.5 GB/day**
+
+즉, 
+NID 1개당 1초에 8bytes가 파일시스템에 저장됩니다.
+
+예를들어, 
+평균 데이터변화를 30%로 가정한다면(엔트로피를 0.3으로 가정. 행복회로 🧠 풓가동중), NID 20만개의 경우 하루 41.5 GB가 저장됩니다
+```
 
