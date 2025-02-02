@@ -82,4 +82,8 @@ data
 > If the average change rate is 30% (entropy ≈ 0.3)
 > 
 > 1 NID ≈ 207,360 bytes/day, **200,000 NID ≈ 41.5 GB/day**
+>
+> _즉, NID 1개당 1초에 8bytes가 파일시스템에 저장됩니다._
+> 
+> _예를들어, 평균 데이터변화를 30%로 가정한다면(엔트로피를 0.3으로 가정), NID 20만개의 경우 하루 41.5 GB가 저장됩니다_
 
